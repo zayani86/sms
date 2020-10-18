@@ -39,13 +39,8 @@ class Auth extends MY_Controller
 			}
 			
 			if ($this->ion_auth->login($newidentity, $this->input->post('password'), $remember)) {
-				//if the login is successful
-				//redirect them back to the home page
-
-
-				// $this->session->set_flashdata('message', $this->ion_auth->messages());
-				// redirect('/dashboard', 'refresh');
-				$this->load->model('sistem_model');
+                
+                ## redirect function
 				$this->load->model(array('sistem_model', 'transaksidb_model'));
 
 				$id = get_session("user_id");
@@ -77,26 +72,26 @@ class Auth extends MY_Controller
 					redirect('/profil/first_time_login') . url_akses();
 				} else {
 
-					$this->db->trans_begin();
+					// $this->db->trans_begin();
 
-					$profile_ptj = $this->sistem_model->get_ptj_by_profile($id);
+					// $profile_ptj = $this->sistem_model->get_ptj_by_profile($id);
 					
-					if(!empty($profile_ptj)){
-						foreach($profile_ptj as $key => $value){
-							if(!empty($value->tarikh_tamat)){
-								if($value->tarikh_tamat < date("Y-m-d")){
-									$this->transaksidb_model->update("profile_ptj_role", "id", $value->ppr_id, ['is_active' => 0]);
-								}
-							}
-						}
-					}
+					// if(!empty($profile_ptj)){
+					// 	foreach($profile_ptj as $key => $value){
+					// 		if(!empty($value->tarikh_tamat)){
+					// 			if($value->tarikh_tamat < date("Y-m-d")){
+					// 				$this->transaksidb_model->update("profile_ptj_role", "id", $value->ppr_id, ['is_active' => 0]);
+					// 			}
+					// 		}
+					// 	}
+					// }
 
 
-					if ($this->db->trans_status() === FALSE) {
-						$this->db->trans_rollback();
-					} else {
-						$this->db->trans_commit();
-					}
+					// if ($this->db->trans_status() === FALSE) {
+					// 	$this->db->trans_rollback();
+					// } else {
+					// 	$this->db->trans_commit();
+					// }
 
 					$this->session->set_flashdata('message', $this->ion_auth->messages());
 					redirect('/profil/pusat_tanggungjawab', 'refresh');

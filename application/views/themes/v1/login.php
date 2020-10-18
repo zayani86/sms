@@ -30,7 +30,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo assets_url(); ?>components/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo assets_url(); ?>icon/themify-icons/themify-icons.css">
     <link rel="stylesheet" type="text/css" href="<?php echo assets_url(); ?>css/style.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo assets_url(); ?>css/style_jts.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo assets_url(); ?>css/style_master.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo assets_url(); ?>components/sweetalert2/css/sweetalert2.css">
     <script  src="<?php echo assets_url(); ?>components/jquery/js/jquery.min.js"></script>
 

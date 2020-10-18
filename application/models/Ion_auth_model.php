@@ -906,17 +906,6 @@ class Ion_auth_model extends CI_Model
 		}
 		
 		$this->trigger_events('extra_where');
-		// echo $this->identity_column. ' - '. $identity;
-		// $query = $this->db->select($this->identity_column .  ', email, penyedia, penyemak, pelulus, level, '.$this->tables['users'].'.id as id,'.
-		// 					' password, '.$this->tables['users'].'.is_active as active, last_login,' . 
-		// 					$this->tables['profiles'].'.id as profile_id,'.$this->tables['profiles'].
-		// 					'.name,'.$this->tables['profiles'].'.nama_ringkasan,' . $this->tables['profiles'].'.konf_unit_id as unit_id' )
-		// 					->join($this->tables['profiles'], $this->tables['users'].'.'.$this->join['profiles'].'='.$this->tables['profiles'].'.id')
-		// 					->where($this->identity_column, $identity)
-		// 					->limit(1)
-		// 					->order_by('id', 'desc')
-		// 					->get($this->tables['users']);
-
 		$query = $this->db->get_where('users', array('username' => $identity, 'soft_delete' => 0, 'is_active' => 1), 1, 0);
 
 		if ($this->is_max_login_attempts_exceeded($identity))
@@ -945,36 +934,10 @@ class Ion_auth_model extends CI_Model
 
 					return false;
 				}
-				if($user->tarikh_tamat != 0)
-				if(!empty($user->tarikh_tamat)){
-					if(date("Ymd", strtotime($user->tarikh_tamat)) < date("Ymd")){
-						$this->trigger_events('post_login_unsuccessful');
-						$this->set_error_kod("1");
-						
-						$this->_diactivated_temporary_user($user->id);
-
-						return false;
-					}
-				}
 
 				$this->set_session($user);
-
 				$this->update_last_login($user->id);
-
 				$this->clear_login_attempts($identity);
-				// $this->clear_forgotten_password_code($identity);
-
-				// if ($this->config->item('remember_users', 'ion_auth'))
-				// {
-				// 	if ($remember)
-				// 	{
-				// 		$this->remember_user($identity);
-				// 	}
-				// 	else
-				// 	{
-				// 		$this->clear_remember_code($identity);
-				// 	}
-				// }
 				
 				// Rehash if needed
 				$this->rehash_password_if_needed($user->password, $identity, $password);
