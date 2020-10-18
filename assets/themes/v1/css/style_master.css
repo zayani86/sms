@@ -104,7 +104,7 @@ body#LoginForm {
 }
 
 .btn-blue-login {
-	background: #5cc1b3;
+	background: #896fc6;
 	color: #fff;
 	cursor: pointer;
 	transition: all ease-in 0.3s;
@@ -138,7 +138,7 @@ body#LoginForm {
 }
 
 .btn-cancel-login {
-	background: goldenrod;
+	background: #189bc5;
 	color: #fff;
 	cursor: pointer;
 	transition: all ease-in 0.3s;
@@ -170,7 +170,7 @@ body#LoginForm {
 	padding: 30px 50px 0 50px;
 	border-style: solid;
 	border-width: 5px;
-	border-color: #5cc1b3;
+	border-color: #c15c5c;
 }
 
 .main-div-logo {
