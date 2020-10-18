@@ -94,7 +94,7 @@ class Auth extends MY_Controller
 					// }
 
 					$this->session->set_flashdata('message', $this->ion_auth->messages());
-					redirect('/profil/pusat_tanggungjawab', 'refresh');
+					redirect('/landing/dashboard_main', 'refresh');
 				}
 			} else {
 				// if the login was un-successful

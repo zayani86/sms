@@ -10,10 +10,8 @@ class Landing extends MY_Controller
 		
 		$data['formtitle'] = 'Dashboard';
 		$data['lastnewcrumb'] = $data['formtitle'];
-		
-		$data['profile'] = $this->sistem_model->pengguna_get_profile($id);
 
-		$this->load->view('dashboard/frm_dashboard_1',$data);
+		$this->load->view('dashboard/frm_dashboard_1', $data);
     }
 
 }
