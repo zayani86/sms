@@ -73,13 +73,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+$active_group = 'default';
+$query_builder = TRUE;
+
+switch (ENVIRONMENT) {
+case "local":
+
+	$cfg_database = [ 
+		'dsn' => 'mysql:host=localhost;port=3306;dbname=sms',
+		'username' => 'root',
+		'password' => '1234',
+		'hostname' => 'localhost',
+		'database' => 'sms',
+		'port' => '3306',
+	];
+
+	break;
+
+}
+
 $db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
-	'dbdriver' => 'mysqli',
+
+	'dsn' => $cfg_database['dsn'],
+	'hostname' => $cfg_database['hostname'],
+	'port' => $cfg_database['port'],
+	'username' => $cfg_database['username'],
+	'password' => $cfg_database['password'],
+	'database' => $cfg_database['database'],
+	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
@@ -92,5 +113,5 @@ $db['default'] = array(
 	'compress' => FALSE,
 	'stricton' => FALSE,
 	'failover' => array(),
-	'save_queries' => TRUE
+	'save_queries' => TRUE,
 );
