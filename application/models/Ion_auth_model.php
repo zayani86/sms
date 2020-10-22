@@ -1947,13 +1947,6 @@ class Ion_auth_model extends CI_Model
 			'last_check'           => time(),
 			'nama'       		   => $user->name,
 			'nama_ringkasan'       => $user->nama_ringkasan,
-			'profil_id'      	   => $user->profile_id, //used to access profil
-			'unit_id'      	   	   => $user->konf_unit_id, //used to access profil
-			'penyedia'      	   => $user->penyedia, //used to access profil
-			'penyemak'      	   => $user->penyemak, //used to access profil
-			'pelulus'      	   	   => $user->pelulus, //used to access profil
-			'level'      	   	   => $user->level, //used to access profil
-			'penyelia'      	   	   => $user->penyelia, //used to access profil
 		];
 
 		$this->session->set_userdata($session_data);
