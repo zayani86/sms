@@ -11,7 +11,7 @@ class Landing extends MY_Controller
 		$data['formtitle'] = 'Dashboard';
 		$data['lastnewcrumb'] = $data['formtitle'];
 
-		$this->load->view('dashboard/frm_dashboard_1', $data);
+		// $this->load->view('dashboard/frm_dashboard_1', $data);
     }
 
 }

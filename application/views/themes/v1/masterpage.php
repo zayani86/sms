@@ -194,41 +194,35 @@
 
 							<li>
 								<div style="top: calc(50% - 8px);font-size: 14px; height: 56px;">
-									<p style="color: #FFF" class="header-name"><?php echo $this->session->ptj_nama	?><?php echo !empty(get_konf_unit(get_session('unit_id'))) ? ' - Unit ' .get_konf_unit(get_session('unit_id')) : '' ?> [ <?php echo strtoupper($this->session->role_name)	?> ]</p>
+									<p style="color: #FFF" class="header-name"><?php echo $this->session->nama	?></p>
 								</div>
 							</li>
-<!--							<li>-->
-<!--								<div style="top: calc(50% - 8px);font-size: 14px; height: 56px;">-->
-<!--									<marquee><p style="color: #FFF;">[ --><?php //echo strtoupper($this->session->role_name)	?><!-- ] </p></marquee>-->
-<!--								</div>-->
-<!--							</li>-->
 						</ul>
 						<ul class="nav-right">
 							<?php
-							$this->load->model('sistem_model');
-							$id = $this->session->user_id;
-							$profile = $this->sistem_model->pengguna_get_profile($id);
+							// $this->load->model('sistem_model');
+							// $id = $this->session->user_id;
+							// $profile = $this->sistem_model->pengguna_get_profile($id);
 							?>
 							<li class="user-profile header-notification">
 								<a href="javascript:void(0);">
-									<img src="<?php echo (isset($profile->profile_img) ? $profile->profile_img : assets_url() . 'images/general/avatar-blank.png'); ?>" class="img-radius gambar" alt="User-Profile-Image">
+									<img src="<?php echo ( assets_url() . 'images/general/avatar-blank.png'); ?>" class="img-radius gambar" alt="User-Profile-Image">
 									<span><?php echo $this->session->username; ?></span>
 									<i class="ti-angle-down"></i>
 								</a>
 								<ul class="show-notification profile-notification">
 									<?php
-									$CI = &get_instance();
-									$CI->load->model('sistem_model');
-									$ptj = $CI->sistem_model->get_ptj_by_profile(get_session('user_id'));
+									// $CI = &get_instance();
+									// $CI->load->model('sistem_model');
+									// $ptj = $CI->sistem_model->get_ptj_by_profile(get_session('user_id'));
 
 									?>
-									<?php if (count($ptj) > 1) { ?>
 										<li>
 											<a href="javascript:void(0)" data-toggle="modal" data-target="#tukarptjModal">
 												<i class="ti-control-shuffle"></i> Pusat Tanggungjawab
 											</a>
 										</li>
-									<?php } ?>
+
 									<li>
 										<a href="<?php echo base_url('profil/set_user_profile') ?>">
 											<i class="ti-user"></i> Profil Saya
@@ -259,7 +253,7 @@
 						<div class="pcoded-inner-content">
 							<div class="main-body">
 								<div class="page-wrapper">
-									<?php echo $this->breadcrumbs->generate($lastnewcrumb); ?>
+									
 									<div class="row">
 										<div class="card-block2 title" id="title">
 											<h5><?php echo $formtitle ?></h5>
@@ -439,35 +433,7 @@
                 $("#btn_filter_searchform").click()
 			}
 		});
-		// $(document).keydown(function(e) {
-		//
-		//     // Set self as the current item in focus
-		//     var self = $(':focus'),
-		//         // Set the form by the current item in focus
-		//         form = self.parents('form:eq(0)'),
-		//         focusable;
-		//
-		//     // Array of Indexable/Tab-able items
-		//     focusable = form.find('input,a,select,button,textarea,div[contenteditable=true]').filter(':visible');
-		//
-		//     function enterKey(){
-		//         if (e.which === 13 && !self.is('textarea,div[contenteditable=true]')) { // [Enter] key
-		//
-		//             // If not a regular hyperlink/button/textarea
-		//             if ($.inArray(self, focusable) && (!self.is('a,button'))){
-		//                 // Then prevent the default [Enter] key behaviour from submitting the form
-		//                 e.preventDefault();
-		//             } // Otherwise follow the link/button as by design, or put new line in textarea
-		//
-		//             // Focus on the next item (either previous or next depending on shift)
-		//             focusable.eq(focusable.index(self) + (e.shiftKey ? -1 : 1)).focus();
-		//
-		//             return false;
-		//         }
-		//     }
-		//     // We need to capture the [Shift] key and check the [Enter] key either way.
-		//     if (e.shiftKey) { enterKey() } else { enterKey() }
-		// });
+
 
 		tinymce.init({
 			selector: ".htmleditor", // change this value according to your HTML
