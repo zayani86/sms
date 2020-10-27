@@ -15,7 +15,7 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
 		// $this->load->model('sistem_model');
 		$this->load->helper(array('form', 'url'));
-		$this->load->library(array('ion_auth'));
+		$this->load->library(array('ion_auth','breadcrumbs'));
 
 		if($this->ion_auth->logged_in() == true){ $this->_by_pass = false; }
 

@@ -211,18 +211,6 @@
 									<i class="ti-angle-down"></i>
 								</a>
 								<ul class="show-notification profile-notification">
-									<?php
-									// $CI = &get_instance();
-									// $CI->load->model('sistem_model');
-									// $ptj = $CI->sistem_model->get_ptj_by_profile(get_session('user_id'));
-
-									?>
-										<li>
-											<a href="javascript:void(0)" data-toggle="modal" data-target="#tukarptjModal">
-												<i class="ti-control-shuffle"></i> Pusat Tanggungjawab
-											</a>
-										</li>
-
 									<li>
 										<a href="<?php echo base_url('profil/set_user_profile') ?>">
 											<i class="ti-user"></i> Profil Saya
@@ -253,7 +241,7 @@
 						<div class="pcoded-inner-content">
 							<div class="main-body">
 								<div class="page-wrapper">
-									
+								<?php echo $this->breadcrumbs->generate($lastnewcrumb); ?>
 									<div class="row">
 										<div class="card-block2 title" id="title">
 											<h5><?php echo $formtitle ?></h5>
@@ -298,56 +286,6 @@
 	</div>
 	<!-- modal section end -->
 
-
-	<div class="modal fade" id="tukarptjModal" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Pusat Tanggungjawab</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="col-sm-12">
-						<div class="alert alert-info icons-alert text-inverse">
-							<p>Sila klik Pusat Tanggungjawab yang berkenaan jika anda ingin ubah akses ke Pusat
-								Tanggungjawab tersebut.
-							</p>
-						</div>
-						<div class="form-group row">
-							<div class="col-md-12 ">
-								<p class="m-b-10">Kini anda akses kepada <code>(<?php echo (get_session("ptj_kod")); ?>) -
-										<?php echo (get_session("ptj_nama")); ?></code>.</p>
-							</div>
-						</div>
-						<div class="form-group row p-t-20">
-							<div class="col-md-12 ">
-								<p>Lain-lain Pusat Tanggungjawab :</p>
-								<?php foreach ($ptj as $value) { ?>
-									<a href="<?= base_url("profil/set_ptj/" . $value->konf_ptj_id . "/") . $value->id; ?>" class="font-color ">
-										<div class="card notification-card bg-default">
-											<div class="card-block2 ">
-												<div class="row align-items-center ">
-													<div class="col-12 notify-cont">
-														<h6><?= $value->ptj_kod; ?> - <?= $value->ptj_nama; ?><br>[ <?php echo strtoupper($value->role_name); ?> ]</h6>
-													</div>
-												</div>
-											</div>
-										</div>
-									</a>
-
-								<?php } ?>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<!-- jquery slimscroll js -->
 	<script src="<?php echo assets_url(); ?>components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
