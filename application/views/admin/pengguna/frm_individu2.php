@@ -52,7 +52,7 @@
                                     <div class="col-sm-9">
                                         <select name="intevensi" id="test" class="form-control">
                                             <option value="">-- Sila Pilih --</option>
-                                            <?= generate_option_konf_kod_by_kategory('SASARAN', set_value('sasaran', isset($profile->konf_unit_id) ? $profile->konf_unit_id : "")); ?>
+                                            <?= generate_option_konf_kod_by_kategory('INTEVENSI', set_value('intevensi', isset($profile->konf_unit_id) ? $profile->konf_unit_id : "")); ?>
                                         </select>  
                                     </div>
                                 </div>
