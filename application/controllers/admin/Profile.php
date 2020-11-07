@@ -76,6 +76,16 @@ class Profile extends MY_Controller
         $this->load->view('admin/pengguna/frm_individu', $data);
     }
 
+    public function lapor_individu2()
+    {
+        $data['mode'] = 'add';
+        $data['formtitle'] = 'Kaunseling';
+        $data['actionform'] = 'admin/profile/simpan_individu2';
+        $data['lastnewcrumb'] = 'Lapor';
+
+        $this->load->section('js_header', array('admin/pengguna/js_frm_pengguna.php'));
+        $this->load->view('admin/pengguna/frm_individu2', $data);
+    }
     public function lapor_program()
     {
         $data['mode'] = 'add';
@@ -136,7 +146,8 @@ class Profile extends MY_Controller
 				$this->db->trans_commit();
                 
                 $this->session_manager->flash_success('Maklumat pengguna baru telah berjaya disimpan.');
-				redirect(base_url('landing/dashboard_main') );
+               $this-> lapor_individu2();
+				//redirect(base_url('landing/dashboard_main') );
 			}
         
     }
