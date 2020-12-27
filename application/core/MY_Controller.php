@@ -20,9 +20,9 @@ class MY_Controller extends CI_Controller {
 		if($this->ion_auth->logged_in() == true){ $this->_by_pass = false; }
 
 		$this->output->unset_template();
-
 		
 		if(!$this->_by_pass){
+			
 			$this->output->set_template($this->config->item('theme_masterpage'));
 			$setmenu=true;
 		} else {
@@ -43,9 +43,11 @@ class MY_Controller extends CI_Controller {
 
 			}
 			if ($setmenu){
+				
 				$this->menu_manager->addToSession($this->session->user_id);
 			}
         }else{
+			
 			$this->output->set_template($this->config->item('theme_login'));
         }
     }

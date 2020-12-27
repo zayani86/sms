@@ -43,7 +43,7 @@
 									</div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Nama Singkatan<span class="text-danger">&#42;</span></label>
+                                    <label class="col-sm-3 col-form-label">Nama Singkatan</label>
                                     <div class="col-sm-9">
                                         <input id="nama_ringkasan" name="nama_ringkasan" type="text" class="form-control <?php echo (empty(form_error('nama_ringkasan'))) ? '' : 'is-invalid'; ?>" value="<?php echo set_value('nama_ringkasan', isset($profile->nama_ringkasan) ? $profile->nama_ringkasan : ''); ?>" maxlength="10">
                                     </div>
@@ -87,11 +87,20 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Example Dropdown</label>
+                                    <label class="col-sm-3 col-form-label">Organisasi</label>
                                     <div class="col-sm-9">
-                                        <select name="test" id="test" class="form-control">
+                                        <select name="konf_group_id" id="konf_group_id" class="form-control">
                                             <option value="">-- Sila Pilih --</option>
-                                            <?= generate_option_konf_kod_by_kategory('TEST', set_value('test', isset($profile->konf_unit_id) ? $profile->konf_unit_id : "")); ?>
+                                            <?= generate_option_group(set_value('konf_group_id', isset($profile->konf_unit_id) ? $profile->konf_unit_id : "")); ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Sekolah 1</label>
+                                    <div class="col-sm-9">
+                                        <select name="tbl_sekolah_id" id="tbl_sekolah_id" class="form-control">
+                                            <option value="">-- Sila Pilih --</option>
+                                            <?= generate_option_group(set_value('tbl_sekolah', isset($profile->konf_unit_id) ? $profile->konf_unit_id : "")); ?>
                                         </select>
                                     </div>
                                 </div>

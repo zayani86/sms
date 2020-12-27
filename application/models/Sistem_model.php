@@ -21,4 +21,16 @@ class Sistem_model extends CI_Model
 
         return $query->result_object();
     }
+
+    public function if_exist($parameter, $table, $where = []) //count existing row
+    {
+        $this->db->select('count(' . $parameter . ') as num');
+        $this->db->from($table);
+        foreach ($where as $key => $value) {
+            $this->db->where($key, $value);
+        }
+        $query = $this->db->get();
+        
+        return $query->row_object();
+    }
 }

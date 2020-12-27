@@ -906,7 +906,15 @@ class Ion_auth_model extends CI_Model
 		}
 		
 		$this->trigger_events('extra_where');
-		$query = $this->db->get_where('users', array('username' => $identity, 'soft_delete' => 0, 'is_active' => 1), 1, 0);
+		$this->db->select('u.*, mukr.konf_sekolah');
+		$this->db->from('users u');
+		$this->db->join('map_user_konf_role mukr', 'mukr.user_id = u.id');
+		$this->db->where('u.username', $identity);
+		$this->db->where('u.soft_delete', 0);
+		$this->db->where('u.is_active', 1);
+		$query = $this->db->get();
+		
+		// $query = $this->db->get_where('users', array('username' => $identity, 'soft_delete' => 0, 'is_active' => 1), 1, 0);
 
 		if ($this->is_max_login_attempts_exceeded($identity))
 		{
@@ -922,7 +930,7 @@ class Ion_auth_model extends CI_Model
 		if ($query->num_rows() === 1)
 		{
 			$user = $query->row();
-			
+			// pr($user);
 			if ($this->verify_password($password, $user->password, $identity))
 			{ 
 				if ($user->is_active == 0)
@@ -1947,6 +1955,7 @@ class Ion_auth_model extends CI_Model
 			'last_check'           => time(),
 			'nama'       		   => $user->name,
 			'nama_ringkasan'       => $user->nama_ringkasan,
+			'konf_sekolah'       => $user->konf_sekolah,
 		];
 
 		$this->session->set_userdata($session_data);
@@ -2038,9 +2047,11 @@ class Ion_auth_model extends CI_Model
 
 		// get the user with the selector
 		$this->trigger_events('extra_where');
-		$query = $this->db->select($this->identity_column . ', id, email, remember_code, last_login')
-						  ->where('remember_selector', $token->selector)
-						  ->where('active', 1)
+		$query = $this->db->select($this->identity_column . ', users.id, users.email, users.remember_code, users.last_login, mukr.konf_sekolah')
+						  ->join('map_user_konf_role mukr', 'mukr.user_id = users.id')
+
+						  ->where('users.remember_selector', $token->selector)
+						  ->where('users.active', 1)
 						  ->limit(1)
 						  ->get($this->tables['users']);
 
